@@ -1,0 +1,18 @@
+<%- include('_head', { title: 'Đăng nhập', bare: true }) %>
+<div class="login">
+  <form class="card login__card" method="post" action="/admin/login">
+    <p class="login__brand">PHUC FASHION</p>
+    <h1>Đăng nhập quản trị</h1>
+    <% if (!configured) { %>
+      <div class="flash flash--error" role="alert">Chưa đặt mật khẩu quản trị. Hãy thêm biến môi trường <code>ADMIN_PASSWORD</code> rồi khởi động lại ứng dụng.</div>
+    <% } %>
+    <% if (error) { %><div class="flash flash--error" role="alert"><%= error %></div><% } %>
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <div class="field">
+      <label for="password">Mật khẩu</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required autofocus>
+    </div>
+    <button class="btn btn--primary btn--block" type="submit">Đăng nhập</button>
+  </form>
+</div>
+<%- include('_foot') %>

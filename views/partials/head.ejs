@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title ? `${title} — PHUC FASHION` : 'PHUC FASHION — Maison de couture' %></title>
+  <meta name="description" content="<%= description %>">
+  <link rel="canonical" href="<%= canonical %>">
+  <link rel="alternate" hreflang="vi" href="<%= lang === 'vi' ? canonical : altUrl %>">
+  <link rel="alternate" hreflang="en" href="<%= lang === 'en' ? canonical : altUrl %>">
+  <meta property="og:title" content="<%= title || 'PHUC FASHION' %>">
+  <meta property="og:description" content="<%= description %>">
+  <meta property="og:type" content="website">
+  <% if (typeof ogImage !== 'undefined' && ogImage) { %><meta property="og:image" content="<%= h.img(ogImage, 1200) %>"><% } %>
+  <meta name="theme-color" content="#0C0A09">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.pexels.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap&subset=vietnamese">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body class="<%= typeof bodyClass !== 'undefined' ? bodyClass : '' %>">
+  <a class="skip-link" href="#main"><%= t.skip %></a>
+
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"></span>
+        <span class="visually-hidden" data-label-open="<%= t.menu %>" data-label-close="<%= t.closeMenu %>"><%= t.menu %></span>
+      </button>
+
+      <nav class="nav nav--primary" aria-label="<%= lang === 'en' ? 'Primary' : 'Điều hướng chính' %>">
+        <a href="<%= url('/collections') %>" <%- current.startsWith('/collections') || current.startsWith('/products') ? 'aria-current="page"' : '' %>><%= t.nav.collections %></a>
+        <a href="<%= url('/journal') %>" <%- current.startsWith('/journal') ? 'aria-current="page"' : '' %>><%= t.nav.journal %></a>
+        <a href="<%= url('/about') %>" <%- current === '/about' ? 'aria-current="page"' : '' %>><%= t.nav.about %></a>
+      </nav>
+
+      <a class="wordmark" href="<%= url('/') %>" aria-label="PHUC FASHION — <%= t.nav.home %>">
+        <span class="wordmark__main">PHUC</span><span class="wordmark__sub">FASHION</span>
+      </a>
+
+      <div class="nav nav--utility">
+        <a class="lang-switch" href="<%= altUrl %>" hreflang="<%= lang === 'en' ? 'vi' : 'en' %>" lang="<%= lang === 'en' ? 'vi' : 'en' %>"><%= t.switchLang %></a>
+        <a class="btn btn--small btn--outline nav__cta" href="<%= url('/appointment') %>"><%= t.nav.appointment %></a>
+      </div>
+    </div>
+
+    <div class="site-menu" id="site-menu" data-menu hidden>
+      <nav aria-label="<%= lang === 'en' ? 'Mobile' : 'Điều hướng di động' %>">
+        <ul>
+          <li><a href="<%= url('/') %>"><%= t.nav.home %></a></li>
+          <li><a href="<%= url('/collections') %>"><%= t.nav.collections %></a></li>
+          <li><a href="<%= url('/collections') %>?category=women"><%= t.nav.women %></a></li>
+          <li><a href="<%= url('/collections') %>?category=accessories"><%= t.nav.accessories %></a></li>
+          <li><a href="<%= url('/journal') %>"><%= t.nav.journal %></a></li>
+          <li><a href="<%= url('/about') %>"><%= t.nav.about %></a></li>
+          <li><a href="<%= url('/appointment') %>"><%= t.nav.appointment %></a></li>
+        </ul>
+        <a class="site-menu__lang" href="<%= altUrl %>" lang="<%= lang === 'en' ? 'vi' : 'en' %>"><%= t.switchLang %></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">

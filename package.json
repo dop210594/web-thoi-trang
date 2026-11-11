@@ -1,0 +1,23 @@
+{
+  "name": "phuc-fashion",
+  "version": "1.0.0",
+  "description": "PHUC FASHION — website nhà mốt cao cấp (Node.js + Express + EJS)",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "compression": "^1.8.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "helmet": "^8.1.0",
+    "memorystore": "^1.6.7",
+    "multer": "^2.0.1"
+  }
+}

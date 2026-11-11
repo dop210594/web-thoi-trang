@@ -1,0 +1,121 @@
+<%- include('partials/head') %>
+<%
+  const field = (name) => ({
+    invalid: errors[name] ? 'aria-invalid="true" aria-describedby="' + name + '-error"' : '',
+    error: errors[name]
+  });
+  const v = (name) => values[name] || '';
+%>
+
+<div class="appointment">
+  <div class="appointment__media">
+    <img src="<%= h.img(settings.appointmentImage, 1400) %>" srcset="<%= h.srcset(settings.appointmentImage) %>" sizes="(min-width: 1024px) 45vw, 100vw" alt="" width="1200" height="1600">
+  </div>
+
+  <div class="appointment__body">
+    <p class="eyebrow">PHUC FASHION</p>
+    <h1 class="page-title"><%= t.appt.title %></h1>
+    <p class="lead"><%= t.appt.intro %></p>
+
+    <% if (success) { %>
+      <div class="notice notice--success" role="status" tabindex="-1" data-autofocus>
+        <p><%= t.appt.success %></p>
+      </div>
+    <% } else { %>
+
+      <% if (Object.keys(errors).length) { %>
+        <div class="notice notice--error" role="alert" tabindex="-1" data-autofocus>
+          <p><strong><%= errors.form || t.appt.errorSummary %></strong></p>
+          <ul>
+            <% Object.entries(errors).filter(([k]) => k !== 'form').forEach(([k, msg]) => { %>
+              <li><a href="#f-<%= k %>"><%= msg %></a></li>
+            <% }) %>
+          </ul>
+        </div>
+      <% } %>
+
+      <form class="form" method="post" action="<%= url('/appointment') %>" novalidate data-form>
+        <input type="hidden" name="_csrf" value="<%= csrf %>">
+        <div class="form__hp" aria-hidden="true">
+          <label for="f-website">Website</label>
+          <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form__row">
+          <div class="field <%= errors.name ? 'field--error' : '' %>">
+            <label for="f-name"><%= t.appt.name %> <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required value="<%= v('name') %>" <%- field('name').invalid %>>
+            <% if (errors.name) { %><p class="field__error" id="name-error"><%= errors.name %></p><% } %>
+          </div>
+        </div>
+
+        <div class="form__row form__row--two">
+          <div class="field <%= errors.email ? 'field--error' : '' %>">
+            <label for="f-email"><%= t.appt.email %> <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required value="<%= v('email') %>" <%- field('email').invalid %>>
+            <% if (errors.email) { %><p class="field__error" id="email-error"><%= errors.email %></p><% } %>
+          </div>
+          <div class="field <%= errors.phone ? 'field--error' : '' %>">
+            <label for="f-phone"><%= t.appt.phone %> <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required value="<%= v('phone') %>" <%- field('phone').invalid %>>
+            <% if (errors.phone) { %><p class="field__error" id="phone-error"><%= errors.phone %></p><% } %>
+          </div>
+        </div>
+
+        <div class="form__row form__row--two">
+          <div class="field <%= errors.date ? 'field--error' : '' %>">
+            <label for="f-date"><%= t.appt.date %> <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-date" name="date" type="date" min="<%= today %>" required value="<%= v('date') %>" <%- field('date').invalid %>>
+            <% if (errors.date) { %><p class="field__error" id="date-error"><%= errors.date %></p><% } %>
+          </div>
+          <div class="field">
+            <label for="f-time"><%= t.appt.time %></label>
+            <select id="f-time" name="time">
+              <% Object.entries(t.appt.times).forEach(([k, label]) => { %>
+                <option value="<%= k %>" <%= v('time') === k ? 'selected' : '' %>><%= label %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="field field--choices">
+          <legend><%= t.appt.service %></legend>
+          <div class="choices">
+            <% Object.entries(t.appt.services).forEach(([k, label]) => { %>
+              <label class="choice">
+                <input type="radio" name="service" value="<%= k %>" <%= v('service') === k ? 'checked' : '' %>>
+                <span><%= label %></span>
+              </label>
+            <% }) %>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="f-product"><%= t.appt.product %></label>
+          <select id="f-product" name="product">
+            <option value="">—</option>
+            <% products.forEach(p => { %>
+              <option value="<%= p.slug %>" <%= v('product') === p.slug ? 'selected' : '' %>><%= tr(p.name) %></option>
+            <% }) %>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-message"><%= t.appt.message %></label>
+          <textarea id="f-message" name="message" rows="4" maxlength="2000" aria-describedby="message-help"><%= v('message') %></textarea>
+          <p class="field__help" id="message-help"><%= t.appt.messageHelp %></p>
+        </div>
+
+        <button class="btn btn--dark btn--block" type="submit" data-sending="<%= t.appt.sending %>"><%= t.appt.submit %></button>
+        <p class="field__help"><span aria-hidden="true">*</span> <%= t.appt.required %></p>
+      </form>
+    <% } %>
+
+    <dl class="visit">
+      <div><dt><%= t.appt.visit %></dt><dd><%= tr(settings.address) %></dd></div>
+      <div><dt><%= t.appt.hours %></dt><dd><%= t.appt.hoursValue %></dd></div>
+    </dl>
+  </div>
+</div>
+
+<%- include('partials/foot') %>

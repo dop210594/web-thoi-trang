@@ -1,0 +1,96 @@
+<%- include('_head', { title }) %>
+<div class="admin-head">
+  <h1 class="admin-title"><%= title %></h1>
+  <% if (type !== 'settings') { %><a href="/admin/content/<%= type %>">← Quay lại danh sách</a><% } %>
+</div>
+
+<% if (Object.keys(errors).length) { %>
+  <div class="flash flash--error" role="alert"><%= Object.values(errors).join(' ') %></div>
+<% } %>
+
+<form class="card form" method="post" action="<%= action %>" enctype="multipart/form-data" data-form>
+  <input type="hidden" name="_csrf" value="<%= csrf %>">
+
+  <% fields.forEach(f => { const val = item[f.name]; const id = 'f-' + f.name; %>
+    <% if (f.type === 'i18n' || f.type === 'i18n-text') { %>
+      <fieldset class="field-group">
+        <legend><%= f.label %><% if (f.required) { %> <span class="req">*</span><% } %></legend>
+        <div class="two">
+          <% ['vi', 'en'].forEach(l => { const v = (val && val[l]) || ''; %>
+            <div class="field">
+              <label for="<%= id %>-<%= l %>"><%= l === 'vi' ? 'Tiếng Việt' : 'English' %></label>
+              <% if (f.type === 'i18n') { %>
+                <input id="<%= id %>-<%= l %>" name="<%= f.name %>_<%= l %>" type="text" value="<%= v %>" <%= f.required && l === 'vi' ? 'required' : '' %> <%- errors[f.name] && l === 'vi' ? 'aria-invalid="true"' : '' %>>
+              <% } else { %>
+                <textarea id="<%= id %>-<%= l %>" name="<%= f.name %>_<%= l %>" rows="<%= f.rows || 4 %>"><%= v %></textarea>
+              <% } %>
+            </div>
+          <% }) %>
+        </div>
+        <% if (f.help) { %><p class="help"><%= f.help %></p><% } %>
+      </fieldset>
+
+    <% } else if (f.type === 'checkbox') { %>
+      <label class="check">
+        <input type="checkbox" name="<%= f.name %>" <%= val ? 'checked' : '' %>>
+        <span><%= f.label %></span>
+      </label>
+
+    <% } else if (f.type === 'select') { %>
+      <div class="field">
+        <label for="<%= id %>"><%= f.label %></label>
+        <select id="<%= id %>" name="<%= f.name %>">
+          <% f.options().forEach(([v, label]) => { %><option value="<%= v %>" <%= val === v ? 'selected' : '' %>><%= label %></option><% }) %>
+        </select>
+      </div>
+
+    <% } else if (f.type === 'images') { const list = val || []; %>
+      <fieldset class="field-group">
+        <legend><%= f.label %></legend>
+        <% if (list.length) { %>
+          <div class="thumbs"><% list.forEach(src => { %><img src="<%= h.img(src, 240) %>" alt="" width="90" height="120" loading="lazy"><% }) %></div>
+        <% } %>
+        <div class="field">
+          <label for="<%= id %>">Danh sách ảnh</label>
+          <textarea id="<%= id %>" name="<%= f.name %>" rows="<%= Math.max(2, list.length + 1) %>" class="mono" aria-describedby="<%= id %>-help"><%= list.join('\n') %></textarea>
+          <p class="help" id="<%= id %>-help"><%= f.help %></p>
+        </div>
+        <div class="field">
+          <label for="<%= id %>-upload">Tải ảnh lên (JPG, PNG, WebP — tối đa 8MB/ảnh)</label>
+          <input id="<%= id %>-upload" name="<%= f.name %>_upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple>
+        </div>
+      </fieldset>
+
+    <% } else if (f.type === 'image') { %>
+      <fieldset class="field-group">
+        <legend><%= f.label %></legend>
+        <div class="image-field">
+          <% if (val) { %><img src="<%= h.img(val, 320) %>" alt="" width="120" height="150" loading="lazy"><% } %>
+          <div class="image-field__inputs">
+            <div class="field">
+              <label for="<%= id %>">Đường dẫn ảnh hiện tại</label>
+              <input id="<%= id %>" name="<%= f.name %>" type="text" value="<%= val || '' %>" class="mono">
+            </div>
+            <div class="field">
+              <label for="<%= id %>-upload">Hoặc tải ảnh mới để thay thế</label>
+              <input id="<%= id %>-upload" name="<%= f.name %>_upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+    <% } else { %>
+      <div class="field">
+        <label for="<%= id %>"><%= f.label %></label>
+        <input id="<%= id %>" name="<%= f.name %>" type="<%= f.type === 'number' ? 'text' : f.type === 'date' ? 'date' : 'text' %>" <%- f.type === 'number' ? 'inputmode="numeric"' : '' %> value="<%= val == null ? '' : val %>" <%- f.help ? `aria-describedby="${id}-help"` : '' %>>
+        <% if (f.help) { %><p class="help" id="<%= id %>-help"><%= f.help %></p><% } %>
+      </div>
+    <% } %>
+  <% }) %>
+
+  <div class="form__actions">
+    <button class="btn btn--primary" type="submit" data-sending="Đang lưu…">Lưu</button>
+    <% if (type !== 'settings') { %><a class="btn" href="/admin/content/<%= type %>">Huỷ</a><% } %>
+  </div>
+</form>
+<%- include('_foot') %>

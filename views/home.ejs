@@ -1,0 +1,94 @@
+<%- include('partials/head', { bodyClass: 'is-home', ogImage: settings.heroImage }) %>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__media">
+    <img src="<%= h.img(settings.heroImage, 1400) %>" srcset="<%= h.srcset(settings.heroImage) %>" sizes="(min-width: 768px) 50vw, 100vw" alt="" fetchpriority="high" width="1200" height="1600">
+    <% if (settings.heroImage2) { %>
+      <img class="hero__second" src="<%= h.img(settings.heroImage2, 1400) %>" srcset="<%= h.srcset(settings.heroImage2) %>" sizes="50vw" alt="" width="1200" height="1600">
+    <% } %>
+  </div>
+  <div class="hero__content">
+    <p class="eyebrow eyebrow--light"><%= t.hero.eyebrow %> · <%= collections[0] ? tr(collections[0].season) : '' %></p>
+    <h1 id="hero-title" class="hero__title"><%= t.hero.title %></h1>
+    <div class="hero__actions">
+      <a class="btn btn--light" href="<%= collections[0] ? url('/collections/' + collections[0].slug) : url('/collections') %>"><%= t.hero.cta %></a>
+      <a class="link-underline link-underline--light" href="<%= url('/appointment') %>"><%= t.hero.cta2 %></a>
+    </div>
+  </div>
+</section>
+
+<section class="section manifesto" aria-labelledby="manifesto-label">
+  <div class="container container--narrow">
+    <p id="manifesto-label" class="eyebrow reveal"><%= t.home.manifestoLabel %></p>
+    <p class="manifesto__text reveal"><%= t.home.manifesto %></p>
+    <span class="ornament reveal" aria-hidden="true"></span>
+  </div>
+</section>
+
+<section class="section section--tight" aria-labelledby="featured-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="featured-title" class="section-title reveal"><%= t.home.featured %></h2>
+      <a class="link-underline" href="<%= url('/collections') %>"><%= t.home.viewAll %></a>
+    </div>
+    <div class="product-grid">
+      <% featured.forEach(p => { %><%- include('partials/product-card', { p }) %><% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="collections-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="collections-title" class="section-title reveal"><%= t.home.collections %></h2>
+    </div>
+    <div class="collection-list">
+      <% collections.forEach((c, i) => { %>
+        <a class="collection-tile reveal <%= i === 0 ? 'collection-tile--lead' : '' %>" href="<%= url('/collections/' + c.slug) %>">
+          <img src="<%= h.img(c.cover, 1200) %>" srcset="<%= h.srcset(c.cover) %>" sizes="(min-width: 768px) 50vw, 100vw" alt="" loading="lazy" decoding="async" width="1200" height="1500">
+          <span class="collection-tile__body">
+            <span class="eyebrow eyebrow--light"><%= tr(c.season) %></span>
+            <span class="collection-tile__name"><%= tr(c.name) %></span>
+          </span>
+        </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="split split--dark" aria-labelledby="atelier-title">
+  <div class="split__media">
+    <img src="<%= h.img(settings.atelierImage, 1400) %>" srcset="<%= h.srcset(settings.atelierImage) %>" sizes="(min-width: 768px) 50vw, 100vw" alt="<%= lang === 'en' ? 'An artisan at work in the atelier' : 'Nghệ nhân làm việc trong xưởng may' %>" loading="lazy" decoding="async" width="1200" height="1500">
+  </div>
+  <div class="split__body">
+    <p class="eyebrow eyebrow--gold reveal">Atelier</p>
+    <h2 id="atelier-title" class="display reveal"><%= t.home.atelierTitle %></h2>
+    <p class="lead reveal"><%= t.home.atelierText %></p>
+    <a class="link-underline link-underline--light reveal" href="<%= url('/about') %>"><%= t.home.atelierCta %></a>
+  </div>
+</section>
+
+<% if (posts.length) { %>
+<section class="section" aria-labelledby="journal-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="journal-title" class="section-title reveal"><%= t.home.journal %></h2>
+      <a class="link-underline" href="<%= url('/journal') %>"><%= t.home.viewAll %></a>
+    </div>
+    <div class="post-grid">
+      <% posts.forEach(post => { %><%- include('partials/post-card', { post }) %><% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<section class="cta-band" aria-labelledby="cta-title">
+  <img src="<%= h.img(settings.appointmentImage, 1800) %>" srcset="<%= h.srcset(settings.appointmentImage) %>" sizes="100vw" alt="" loading="lazy" decoding="async" width="1800" height="1000">
+  <div class="cta-band__body container container--narrow">
+    <h2 id="cta-title" class="display reveal"><%= t.home.appointmentTitle %></h2>
+    <p class="lead reveal"><%= t.home.appointmentText %></p>
+    <a class="btn btn--light reveal" href="<%= url('/appointment') %>"><%= t.nav.appointment %></a>
+  </div>
+</section>
+
+<%- include('partials/foot') %>

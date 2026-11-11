@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title><%= typeof title !== 'undefined' ? title + ' — ' : '' %>Quản trị PHUC FASHION</title>
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500&family=Montserrat:wght@400;500;600&display=swap&subset=vietnamese">
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body class="admin">
+  <a class="skip-link" href="#main">Bỏ qua đến nội dung chính</a>
+  <% if (typeof bare === 'undefined' || !bare) { %>
+  <header class="admin-bar">
+    <a class="admin-bar__brand" href="/admin">PHUC <span>Quản trị</span></a>
+    <nav class="admin-bar__nav" aria-label="Quản trị">
+      <a href="/admin" <%- path === '/' ? 'aria-current="page"' : '' %>>Tổng quan</a>
+      <a href="/admin/appointments" <%- path.startsWith('/appointments') ? 'aria-current="page"' : '' %>>Lịch hẹn</a>
+      <a href="/admin/content/products" <%- path.startsWith('/content/products') ? 'aria-current="page"' : '' %>>Sản phẩm</a>
+      <a href="/admin/content/collections" <%- path.startsWith('/content/collections') ? 'aria-current="page"' : '' %>>Bộ sưu tập</a>
+      <a href="/admin/content/posts" <%- path.startsWith('/content/posts') ? 'aria-current="page"' : '' %>>Journal</a>
+      <a href="/admin/settings" <%- path.startsWith('/settings') ? 'aria-current="page"' : '' %>>Cài đặt</a>
+    </nav>
+    <div class="admin-bar__end">
+      <a href="/" target="_blank" rel="noopener">Xem website ↗</a>
+      <form method="post" action="/admin/logout">
+        <input type="hidden" name="_csrf" value="<%= csrf %>">
+        <button type="submit" class="link-btn">Đăng xuất</button>
+      </form>
+    </div>
+  </header>
+  <% } %>
+  <main id="main" class="admin-main" tabindex="-1">
+    <% if (flash) { %>
+      <div class="flash flash--<%= flash.type %>" role="status"><%= flash.message %></div>
+    <% } %>

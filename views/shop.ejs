@@ -1,0 +1,28 @@
+<%- include('partials/head') %>
+
+<header class="page-head container">
+  <p class="eyebrow">PHUC FASHION</p>
+  <h1 class="page-title"><%= title %></h1>
+</header>
+
+<div class="container">
+  <nav class="filters" aria-label="<%= t.filters.label %>">
+    <a href="<%= url('/collections') %>" <%- !category ? 'aria-current="page"' : '' %>><%= t.filters.all %></a>
+    <a href="<%= url('/collections') %>?category=women" <%- category === 'women' ? 'aria-current="page"' : '' %>><%= t.product.category.women %></a>
+    <a href="<%= url('/collections') %>?category=accessories" <%- category === 'accessories' ? 'aria-current="page"' : '' %>><%= t.product.category.accessories %></a>
+    <span class="filters__sep" aria-hidden="true"></span>
+    <% collections.forEach(c => { %>
+      <a href="<%= url('/collections/' + c.slug) %>"><%= tr(c.name) %></a>
+    <% }) %>
+  </nav>
+
+  <% if (products.length) { %>
+    <div class="product-grid product-grid--shop">
+      <% products.forEach(p => { %><%- include('partials/product-card', { p }) %><% }) %>
+    </div>
+  <% } else { %>
+    <p class="empty"><%= t.product.empty %></p>
+  <% } %>
+</div>
+
+<%- include('partials/foot') %>

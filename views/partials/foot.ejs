@@ -1,0 +1,41 @@
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="wordmark wordmark--light" href="<%= url('/') %>"><span class="wordmark__main">PHUC</span><span class="wordmark__sub">FASHION</span></a>
+        <p><%= t.footer.newsletter %></p>
+      </div>
+      <div>
+        <h2 class="site-footer__title"><%= t.footer.explore %></h2>
+        <ul class="site-footer__list">
+          <li><a href="<%= url('/collections') %>?category=women"><%= t.nav.women %></a></li>
+          <li><a href="<%= url('/collections') %>?category=accessories"><%= t.nav.accessories %></a></li>
+          <li><a href="<%= url('/journal') %>"><%= t.nav.journal %></a></li>
+          <li><a href="<%= url('/about') %>"><%= t.nav.about %></a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="site-footer__title"><%= t.footer.contact %></h2>
+        <ul class="site-footer__list">
+          <li><%= tr(settings.address) %></li>
+          <% if (settings.phone) { %><li><a href="tel:<%= settings.phone.replace(/\s/g, '') %>"><%= settings.phone %></a></li><% } %>
+          <% if (settings.email) { %><li><a href="mailto:<%= settings.email %>"><%= settings.email %></a></li><% } %>
+          <li><a href="<%= url('/appointment') %>"><%= t.nav.appointment %></a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="site-footer__title"><%= t.footer.follow %></h2>
+        <ul class="site-footer__list">
+          <% if (settings.instagram) { %><li><a href="<%= settings.instagram %>" rel="noopener" target="_blank">Instagram</a></li><% } %>
+          <% if (settings.facebook) { %><li><a href="<%= settings.facebook %>" rel="noopener" target="_blank">Facebook</a></li><% } %>
+        </ul>
+      </div>
+    </div>
+    <div class="container site-footer__base">
+      <span>© <%= new Date().getFullYear() %> PHUC FASHION. <%= t.footer.rights %></span>
+      <a href="<%= altUrl %>" lang="<%= lang === 'en' ? 'vi' : 'en' %>"><%= t.switchLang %></a>
+    </div>
+  </footer>
+</body>
+</html>

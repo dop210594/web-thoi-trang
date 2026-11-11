@@ -1,0 +1,19 @@
+<%- include('partials/head') %>
+
+<header class="page-head container">
+  <p class="eyebrow">PHUC FASHION</p>
+  <h1 class="page-title"><%= t.journal.title %></h1>
+  <p class="lead"><%= t.journal.intro %></p>
+</header>
+
+<div class="container section section--tight">
+  <% if (posts.length) { %>
+    <div class="post-grid">
+      <% posts.forEach(post => { %><%- include('partials/post-card', { post }) %><% }) %>
+    </div>
+  <% } else { %>
+    <p class="empty"><%= t.journal.empty %></p>
+  <% } %>
+</div>
+
+<%- include('partials/foot') %>

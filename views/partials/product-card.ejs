@@ -1,0 +1,15 @@
+<article class="product-card reveal">
+  <a class="product-card__link" href="<%= url('/products/' + p.slug) %>">
+    <div class="product-card__media">
+      <img src="<%= h.img(p.images[0], 800) %>" srcset="<%= h.srcset(p.images[0], [400, 600, 800, 1200]) %>" sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" alt="<%= tr(p.name) %>" loading="lazy" decoding="async" width="800" height="1067">
+      <% if (p.images[1]) { %>
+        <img class="product-card__alt" src="<%= h.img(p.images[1], 800) %>" alt="" aria-hidden="true" loading="lazy" decoding="async" width="800" height="1067">
+      <% } %>
+    </div>
+    <div class="product-card__body">
+      <span class="eyebrow"><%= t.product.category[p.category] %></span>
+      <h3 class="product-card__title"><%= tr(p.name) %></h3>
+      <span class="product-card__price"><%= h.price(p.price, lang) %></span>
+    </div>
+  </a>
+</article>

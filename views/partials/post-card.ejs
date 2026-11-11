@@ -1,0 +1,11 @@
+<article class="post-card reveal">
+  <a href="<%= url('/journal/' + post.slug) %>" class="post-card__link">
+    <div class="post-card__media">
+      <img src="<%= h.img(post.cover, 900) %>" srcset="<%= h.srcset(post.cover, [480, 800, 1200]) %>" sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" alt="" loading="lazy" decoding="async" width="900" height="600">
+    </div>
+    <time class="eyebrow" datetime="<%= post.date %>"><%= h.date(post.date, lang) %></time>
+    <h3 class="post-card__title"><%= tr(post.title) %></h3>
+    <p class="post-card__excerpt"><%= tr(post.excerpt) %></p>
+    <span class="link-underline" aria-hidden="true"><%= t.journal.read %></span>
+  </a>
+</article>

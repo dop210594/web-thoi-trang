@@ -1,0 +1,62 @@
+[
+  {
+    "id": "seed-16",
+    "slug": "dem-trinh-dien-lua-dem",
+    "title": {
+      "vi": "Đêm trình diễn Lụa Đêm",
+      "en": "The Silk Nocturne show"
+    },
+    "excerpt": {
+      "vi": "Hậu trường buổi ra mắt bộ sưu tập Thu – Đông 2026 tại Sài Gòn.",
+      "en": "Backstage at the Autumn – Winter 2026 launch in Saigon."
+    },
+    "body": {
+      "vi": "Dưới ánh đèn vàng của một nhà kho cũ bên sông Sài Gòn, 32 thiết kế của bộ sưu tập Lụa Đêm lần lượt bước ra.\n\nMỗi chiếc đầm được thử lại lần cuối chỉ vài phút trước giờ diễn. Đội ngũ nghệ nhân đứng sau cánh gà, kim chỉ trong tay, sẵn sàng cho từng chi tiết nhỏ nhất.\n\nChúng tôi muốn khách mời cảm nhận sự tĩnh lặng — không nhạc dồn dập, chỉ tiếng lụa chuyển động.",
+      "en": "Under the amber light of an old warehouse on the Saigon River, the 32 looks of Silk Nocturne stepped out one by one.\n\nEvery gown received a final fitting minutes before the show. Our artisans waited in the wings, needle and thread in hand, ready for the smallest detail.\n\nWe wanted guests to feel stillness — no pounding music, only the sound of moving silk."
+    },
+    "cover": "pexels:28587831",
+    "date": "2026-10-18",
+    "published": true,
+    "createdAt": "2026-10-18T00:00:00.000Z"
+  },
+  {
+    "id": "seed-17",
+    "slug": "120-gio-cho-mot-chiec-dam",
+    "title": {
+      "vi": "120 giờ cho một chiếc đầm",
+      "en": "120 hours for one gown"
+    },
+    "excerpt": {
+      "vi": "Hành trình thủ công phía sau chiếc đầm dạ hội Hồng Phấn.",
+      "en": "The handwork behind the Blush evening gown."
+    },
+    "body": {
+      "vi": "Chiếc đầm Hồng Phấn cần 120 giờ để hoàn thiện, phần lớn dành cho việc đính 4.000 hạt cườm bằng tay.\n\nNghệ nhân của chúng tôi làm việc trên khung căng, từng hạt được cố định bằng hai mũi chỉ để đảm bảo độ bền qua nhiều thập kỷ.",
+      "en": "The Blush gown takes 120 hours to complete, most of it spent hand-setting 4,000 beads.\n\nOur artisans work on a stretched frame, each bead secured with two stitches to last for decades."
+    },
+    "cover": "pexels:6764997",
+    "date": "2026-09-02",
+    "published": true,
+    "createdAt": "2026-09-02T00:00:00.000Z"
+  },
+  {
+    "id": "seed-18",
+    "slug": "nghe-thuat-cua-lua",
+    "title": {
+      "vi": "Nghệ thuật của lụa",
+      "en": "The art of silk"
+    },
+    "excerpt": {
+      "vi": "Vì sao lụa tơ tằm vẫn là chất liệu trung tâm của PHUC FASHION.",
+      "en": "Why mulberry silk remains at the heart of PHUC FASHION."
+    },
+    "body": {
+      "vi": "Lụa tơ tằm thở cùng cơ thể: mát vào mùa hè, ấm vào mùa đông.\n\nChúng tôi làm việc trực tiếp với các làng dệt, chọn từng cây vải theo độ rủ và ánh sắc trước khi đưa vào xưởng.",
+      "en": "Mulberry silk breathes with the body: cool in summer, warm in winter.\n\nWe work directly with weaving villages, choosing each bolt for its drape and lustre before it reaches the atelier."
+    },
+    "cover": "pexels:6487380",
+    "date": "2026-07-21",
+    "published": true,
+    "createdAt": "2026-07-21T00:00:00.000Z"
+  }
+]

@@ -1,0 +1,39 @@
+<%- include('partials/head') %>
+
+<header class="page-head container container--narrow page-head--center">
+  <p class="eyebrow">Maison</p>
+  <h1 class="page-title"><%= t.about.title %></h1>
+  <p class="lead"><%= t.about.lead %></p>
+</header>
+
+<section class="split">
+  <div class="split__media">
+    <img src="<%= h.img(settings.atelierImage, 1400) %>" srcset="<%= h.srcset(settings.atelierImage) %>" sizes="(min-width: 768px) 50vw, 100vw" alt="<%= lang === 'en' ? 'An artisan at work in the atelier' : 'Nghệ nhân làm việc trong xưởng may' %>" loading="lazy" width="1200" height="1500">
+  </div>
+  <div class="split__body">
+    <p class="lead reveal"><%= t.about.p1 %></p>
+    <p class="reveal"><%= t.about.p2 %></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container values">
+    <% t.about.values.forEach(([title, text], i) => { %>
+      <div class="value reveal">
+        <span class="value__num" aria-hidden="true">0<%= i + 1 %></span>
+        <h2 class="value__title"><%= title %></h2>
+        <p><%= text %></p>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+<section class="cta-band">
+  <img src="<%= h.img(settings.heroImage2 || settings.heroImage, 1800) %>" srcset="<%= h.srcset(settings.heroImage2 || settings.heroImage) %>" sizes="100vw" alt="" loading="lazy" width="1800" height="1000">
+  <div class="cta-band__body container container--narrow">
+    <h2 class="display"><%= t.home.appointmentTitle %></h2>
+    <a class="btn btn--light" href="<%= url('/appointment') %>"><%= t.nav.appointment %></a>
+  </div>
+</section>
+
+<%- include('partials/foot') %>

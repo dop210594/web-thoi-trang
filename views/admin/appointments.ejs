@@ -1,0 +1,47 @@
+<%- include('_head', { title: 'Lịch hẹn' }) %>
+<% const services = t.appt.services, times = t.appt.times; const statuses = { new: 'Mới', contacted: 'Đã liên hệ', done: 'Hoàn tất' }; %>
+<div class="admin-head">
+  <h1 class="admin-title">Lịch hẹn <span class="muted">(<%= items.length %>)</span></h1>
+</div>
+
+<% if (!items.length) { %>
+  <div class="card"><p class="muted">Chưa có yêu cầu đặt lịch nào. Khi khách gửi form trên website, yêu cầu sẽ hiện ở đây.</p></div>
+<% } %>
+
+<div class="appts">
+  <% items.forEach(a => { %>
+    <article class="card appt">
+      <div class="appt__head">
+        <div>
+          <h2><%= a.name %></h2>
+          <p class="muted">Gửi lúc <%= new Date(a.createdAt).toLocaleString('vi-VN') %> · <%= a.lang === 'en' ? 'English' : 'Tiếng Việt' %></p>
+        </div>
+        <span class="badge badge--<%= a.status %>"><%= statuses[a.status] %></span>
+      </div>
+      <dl class="appt__grid">
+        <div><dt>Ngày hẹn</dt><dd><%= h.date(a.date, 'vi') %> · <%= times[a.time] %></dd></div>
+        <div><dt>Dịch vụ</dt><dd><%= services[a.service] %></dd></div>
+        <div><dt>Điện thoại</dt><dd><a href="tel:<%= a.phone %>"><%= a.phone %></a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:<%= a.email %>"><%= a.email %></a></dd></div>
+        <% if (a.product) { %><div><dt>Sản phẩm quan tâm</dt><dd><%= products[a.product] || a.product %></dd></div><% } %>
+      </dl>
+      <% if (a.message) { %><p class="appt__msg"><%= a.message %></p><% } %>
+      <div class="appt__actions">
+        <form method="post" action="/admin/appointments/<%= a.id %>" class="inline">
+          <input type="hidden" name="_csrf" value="<%= csrf %>">
+          <label for="s-<%= a.id %>" class="visually-hidden">Trạng thái</label>
+          <select id="s-<%= a.id %>" name="status">
+            <% Object.entries(statuses).forEach(([k, label]) => { %><option value="<%= k %>" <%= a.status === k ? 'selected' : '' %>><%= label %></option><% }) %>
+          </select>
+          <button class="btn" type="submit">Cập nhật</button>
+        </form>
+        <form method="post" action="/admin/appointments/<%= a.id %>" data-confirm="Xoá lịch hẹn của <%= a.name %>? Không thể hoàn tác.">
+          <input type="hidden" name="_csrf" value="<%= csrf %>">
+          <input type="hidden" name="action" value="delete">
+          <button class="link-btn link-btn--danger" type="submit">Xoá</button>
+        </form>
+      </div>
+    </article>
+  <% }) %>
+</div>
+<%- include('_foot') %>

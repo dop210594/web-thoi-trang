@@ -1,0 +1,59 @@
+[
+  {
+    "id": "seed-1",
+    "createdAt": "2026-10-01T00:00:00.000Z",
+    "published": true,
+    "slug": "lua-dem",
+    "name": {
+      "vi": "Lụa Đêm",
+      "en": "Silk Nocturne"
+    },
+    "season": {
+      "vi": "Thu – Đông 2026",
+      "en": "Autumn – Winter 2026"
+    },
+    "description": {
+      "vi": "Những chiếc đầm lụa buông rủ trong sắc đen và ngà, lấy cảm hứng từ ánh đèn Sài Gòn lúc nửa đêm.",
+      "en": "Fluid silk gowns in black and ivory, inspired by Saigon lights at midnight."
+    },
+    "cover": "pexels:28133643"
+  },
+  {
+    "id": "seed-2",
+    "createdAt": "2026-10-01T02:46:40.000Z",
+    "published": true,
+    "slug": "ban-mai",
+    "name": {
+      "vi": "Ban Mai",
+      "en": "First Light"
+    },
+    "season": {
+      "vi": "Xuân – Hè 2026",
+      "en": "Spring – Summer 2026"
+    },
+    "description": {
+      "vi": "Bảng màu trắng sữa, hồng phấn và be, phom dáng nhẹ như hơi thở buổi sớm.",
+      "en": "Milk white, blush and sand in silhouettes as light as morning air."
+    },
+    "cover": "pexels:20544951"
+  },
+  {
+    "id": "seed-3",
+    "createdAt": "2026-10-01T05:33:20.000Z",
+    "published": true,
+    "slug": "kim-hoan",
+    "name": {
+      "vi": "Kim Hoàn",
+      "en": "Gilded"
+    },
+    "season": {
+      "vi": "Bộ sưu tập phụ kiện",
+      "en": "Accessories capsule"
+    },
+    "description": {
+      "vi": "Trang sức vàng chạm thủ công, túi da thuộc và giày cao gót hoàn thiện bằng tay.",
+      "en": "Hand-chased gold jewellery, fine leather bags and hand-finished heels."
+    },
+    "cover": "pexels:16853521"
+  }
+]

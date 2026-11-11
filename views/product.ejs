@@ -1,0 +1,58 @@
+<%- include('partials/head', { ogImage: product.images[0] }) %>
+
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="<%= url('/collections') %>"><%= t.nav.collections %></a>
+    <span aria-hidden="true">/</span>
+    <a href="<%= url('/collections') %>?category=<%= product.category %>"><%= t.product.category[product.category] %></a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page"><%= tr(product.name) %></span>
+  </nav>
+
+  <div class="product">
+    <div class="product__gallery">
+      <% product.images.forEach((src, i) => { %>
+        <figure class="product__image">
+          <img src="<%= h.img(src, 1200) %>" srcset="<%= h.srcset(src) %>" sizes="(min-width: 1024px) 55vw, 100vw" alt="<%= tr(product.name) %><%= i ? ` — ${i + 1}` : '' %>" <%- i ? 'loading="lazy"' : 'fetchpriority="high"' %> decoding="async" width="1200" height="1600">
+        </figure>
+      <% }) %>
+    </div>
+
+    <div class="product__info">
+      <div class="product__sticky">
+        <% if (collection) { %>
+          <p class="eyebrow"><%= t.product.from %> · <a href="<%= url('/collections/' + collection.slug) %>"><%= tr(collection.name) %></a></p>
+        <% } %>
+        <h1 class="product__title"><%= tr(product.name) %></h1>
+        <p class="product__price"><span class="visually-hidden"><%= t.product.price %>: </span><%= h.price(product.price, lang) %></p>
+        <div class="product__desc">
+          <% h.paragraphs(tr(product.description)).forEach(p => { %><p><%= p %></p><% }) %>
+        </div>
+        <a class="btn btn--dark btn--block" href="<%= url('/appointment') %>?product=<%= encodeURIComponent(product.slug) %>"><%= t.product.inquire %></a>
+        <details class="accordion" open>
+          <summary><%= t.product.materials %></summary>
+          <div class="accordion__body"><p><%= tr(product.materials) %></p></div>
+        </details>
+        <details class="accordion">
+          <summary><%= t.appt.visit %></summary>
+          <div class="accordion__body">
+            <p><%= tr(settings.address) %><br><%= t.appt.hoursValue %></p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if (related.length) { %>
+<section class="section" aria-labelledby="related-title">
+  <div class="container">
+    <h2 id="related-title" class="section-title"><%= t.product.related %></h2>
+    <div class="product-grid product-grid--four">
+      <% related.forEach(p => { %><%- include('partials/product-card', { p }) %><% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<%- include('partials/foot') %>

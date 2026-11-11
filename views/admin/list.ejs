@@ -1,0 +1,61 @@
+<%- include('_head', { title: schema.label }) %>
+<%
+  const cats = { women: 'Thời trang nữ', accessories: 'Phụ kiện' };
+  const cell = (item, key) => {
+    const v = item[key];
+    if (key === 'price') return h.price(v, 'vi');
+    if (key === 'category') return cats[v] || v;
+    if (key === 'date') return h.date(v, 'vi');
+    if (v && typeof v === 'object' && !Array.isArray(v)) return v.vi;
+    return v;
+  };
+%>
+<div class="admin-head">
+  <h1 class="admin-title"><%= schema.label %> <span class="muted">(<%= items.length %>)</span></h1>
+  <a class="btn btn--primary" href="/admin/content/<%= type %>/new">+ Thêm <%= schema.singular %></a>
+</div>
+
+<div class="card">
+  <% if (items.length) { %>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <% schema.columns.forEach(([key, label]) => { %><th scope="col"><%= label %></th><% }) %>
+          <th scope="col"><span class="visually-hidden">Thao tác</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+          <tr>
+            <% schema.columns.forEach(([key]) => { %>
+              <td>
+                <% if (key === 'images' || key === 'cover') { const src = key === 'images' ? (item.images || [])[0] : item.cover; %>
+                  <% if (src) { %><img class="thumb" src="<%= h.img(src, 160) %>" alt="" loading="lazy" width="56" height="72"><% } %>
+                <% } else if (key === 'published') { %>
+                  <span class="badge <%= item.published !== false ? 'badge--done' : 'badge--off' %>"><%= item.published !== false ? 'Đang hiện' : 'Đang ẩn' %></span>
+                <% } else if (key === schema.titleField) { %>
+                  <a class="strong-link" href="/admin/content/<%= type %>/<%= item.id %>"><%= cell(item, key) %></a>
+                  <% if (item.featured) { %><span class="badge badge--gold">Nổi bật</span><% } %>
+                <% } else { %>
+                  <%= cell(item, key) %>
+                <% } %>
+              </td>
+            <% }) %>
+            <td class="actions">
+              <a href="/admin/content/<%= type %>/<%= item.id %>">Sửa</a>
+              <form method="post" action="/admin/content/<%= type %>/<%= item.id %>/delete" data-confirm="Xoá <%= schema.singular %> “<%= cell(item, schema.titleField) %>”? Không thể hoàn tác.">
+                <input type="hidden" name="_csrf" value="<%= csrf %>">
+                <button type="submit" class="link-btn link-btn--danger">Xoá</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <% } else { %>
+    <p class="muted">Chưa có <%= schema.singular %> nào.</p>
+  <% } %>
+</div>
+<%- include('_foot') %>

@@ -1,0 +1,46 @@
+<%- include('_head', { title: 'Tổng quan' }) %>
+<% const services = t.appt.services, times = t.appt.times; %>
+<h1 class="admin-title">Tổng quan</h1>
+
+<div class="stats">
+  <a class="stat card" href="/admin/appointments"><span class="stat__num"><%= counts.newAppointments %></span><span class="stat__label">Lịch hẹn mới</span></a>
+  <a class="stat card" href="/admin/content/products"><span class="stat__num"><%= counts.products %></span><span class="stat__label">Sản phẩm</span></a>
+  <a class="stat card" href="/admin/content/collections"><span class="stat__num"><%= counts.collections %></span><span class="stat__label">Bộ sưu tập</span></a>
+  <a class="stat card" href="/admin/content/posts"><span class="stat__num"><%= counts.posts %></span><span class="stat__label">Bài Journal</span></a>
+</div>
+
+<section class="card">
+  <div class="card__head">
+    <h2>Lịch hẹn gần đây</h2>
+    <a href="/admin/appointments">Xem tất cả</a>
+  </div>
+  <% if (latest.length) { %>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Khách</th><th scope="col">Ngày hẹn</th><th scope="col">Dịch vụ</th><th scope="col">Trạng thái</th></tr></thead>
+        <tbody>
+          <% latest.forEach(a => { %>
+            <tr>
+              <td><strong><%= a.name %></strong><br><span class="muted"><%= a.phone %></span></td>
+              <td><%= h.date(a.date, 'vi') %><br><span class="muted"><%= times[a.time] %></span></td>
+              <td><%= services[a.service] %></td>
+              <td><span class="badge badge--<%= a.status %>"><%= { new: 'Mới', contacted: 'Đã liên hệ', done: 'Hoàn tất' }[a.status] %></span></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } else { %>
+    <p class="muted">Chưa có lịch hẹn nào.</p>
+  <% } %>
+</section>
+
+<section class="card">
+  <h2>Thao tác nhanh</h2>
+  <div class="quick">
+    <a class="btn btn--primary" href="/admin/content/products/new">+ Thêm sản phẩm</a>
+    <a class="btn" href="/admin/content/posts/new">+ Viết bài Journal</a>
+    <a class="btn" href="/admin/content/collections/new">+ Thêm bộ sưu tập</a>
+  </div>
+</section>
+<%- include('_foot') %>

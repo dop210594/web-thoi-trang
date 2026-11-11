@@ -1,0 +1,306 @@
+[
+  {
+    "id": "seed-4",
+    "createdAt": "2026-10-01T00:00:00.000Z",
+    "slug": "dam-lua-noir",
+    "name": {
+      "vi": "Đầm lụa Noir",
+      "en": "Noir silk gown"
+    },
+    "category": "women",
+    "collection": "lua-dem",
+    "price": 48500000,
+    "images": [
+      "pexels:34921744",
+      "pexels:28133643"
+    ],
+    "description": {
+      "vi": "Đầm hai dây cắt xéo vải, ôm nhẹ theo đường cong và buông dài chạm gót.",
+      "en": "A bias-cut slip gown that skims the body and falls to the heel."
+    },
+    "materials": {
+      "vi": "100% lụa tơ tằm. Giặt khô.",
+      "en": "100% mulberry silk. Dry clean only."
+    },
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "seed-5",
+    "createdAt": "2026-10-01T00:16:40.000Z",
+    "slug": "dam-tre-vai-ivoire",
+    "name": {
+      "vi": "Đầm trễ vai Ivoire",
+      "en": "Ivoire off-shoulder dress"
+    },
+    "category": "women",
+    "collection": "lua-dem",
+    "price": 39800000,
+    "images": [
+      "pexels:21966540",
+      "pexels:17477621"
+    ],
+    "description": {
+      "vi": "Cổ trễ vai xếp nếp thủ công, phần thân dựng phom tinh tế.",
+      "en": "Hand-draped off-shoulder neckline with a softly structured bodice."
+    },
+    "materials": {
+      "vi": "Lụa satin, lót cupro. Giặt khô.",
+      "en": "Silk satin, cupro lining. Dry clean only."
+    },
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "seed-6",
+    "createdAt": "2026-10-01T00:33:20.000Z",
+    "slug": "dam-da-hoi-hong-phan",
+    "name": {
+      "vi": "Đầm dạ hội Hồng Phấn",
+      "en": "Blush evening gown"
+    },
+    "category": "women",
+    "collection": "ban-mai",
+    "price": 86000000,
+    "images": [
+      "pexels:14108017"
+    ],
+    "description": {
+      "vi": "Đầm dạ hội đính kết 4.000 hạt cườm thủ công trên nền tulle hồng phấn.",
+      "en": "An evening gown hand-embroidered with 4,000 beads on blush tulle."
+    },
+    "materials": {
+      "vi": "Tulle lụa, hạt thủy tinh. Giặt khô chuyên dụng.",
+      "en": "Silk tulle, glass beads. Specialist dry clean."
+    },
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "seed-7",
+    "createdAt": "2026-10-01T00:50:00.000Z",
+    "slug": "dam-trang-ban-mai",
+    "name": {
+      "vi": "Đầm trắng Ban Mai",
+      "en": "First Light white dress"
+    },
+    "category": "women",
+    "collection": "ban-mai",
+    "price": 27500000,
+    "images": [
+      "pexels:20544951"
+    ],
+    "description": {
+      "vi": "Đầm midi tay phồng nhẹ, chất linen pha lụa mát và thoáng.",
+      "en": "A midi dress with soft puff sleeves in a cool linen-silk blend."
+    },
+    "materials": {
+      "vi": "70% linen, 30% lụa. Giặt tay nước lạnh.",
+      "en": "70% linen, 30% silk. Hand wash cold."
+    },
+    "featured": false,
+    "published": true
+  },
+  {
+    "id": "seed-8",
+    "createdAt": "2026-10-01T01:06:40.000Z",
+    "slug": "ao-len-cashmere-rose",
+    "name": {
+      "vi": "Áo len cashmere Rosé",
+      "en": "Rosé cashmere knit"
+    },
+    "category": "women",
+    "collection": "ban-mai",
+    "price": 18900000,
+    "images": [
+      "pexels:6698717"
+    ],
+    "description": {
+      "vi": "Áo len dệt kim lông xù, ấm áp nhưng nhẹ tênh.",
+      "en": "A brushed knit, warm yet weightless."
+    },
+    "materials": {
+      "vi": "100% cashmere Mông Cổ.",
+      "en": "100% Mongolian cashmere."
+    },
+    "featured": false,
+    "published": true
+  },
+  {
+    "id": "seed-9",
+    "createdAt": "2026-10-01T01:23:20.000Z",
+    "slug": "ao-lua-nude",
+    "name": {
+      "vi": "Áo lụa Nude",
+      "en": "Nude silk top"
+    },
+    "category": "women",
+    "collection": "ban-mai",
+    "price": 14500000,
+    "images": [
+      "pexels:1776634"
+    ],
+    "description": {
+      "vi": "Áo lụa sát nách cổ tròn, nền tảng cho mọi phong cách tối giản.",
+      "en": "A sleeveless silk top, the foundation of every minimal wardrobe."
+    },
+    "materials": {
+      "vi": "100% lụa tơ tằm.",
+      "en": "100% mulberry silk."
+    },
+    "featured": false,
+    "published": true
+  },
+  {
+    "id": "seed-10",
+    "createdAt": "2026-10-01T01:40:00.000Z",
+    "slug": "dam-sequin-minuit",
+    "name": {
+      "vi": "Đầm sequin Minuit",
+      "en": "Minuit sequin dress"
+    },
+    "category": "women",
+    "collection": "lua-dem",
+    "price": 52000000,
+    "images": [
+      "pexels:13057827"
+    ],
+    "description": {
+      "vi": "Đầm sequin đen ánh bạc dành cho những đêm tiệc dài.",
+      "en": "Black and silver sequin dress for long evenings."
+    },
+    "materials": {
+      "vi": "Sequin trên nền lưới lụa.",
+      "en": "Sequins on silk mesh."
+    },
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "seed-11",
+    "createdAt": "2026-10-01T01:56:40.000Z",
+    "slug": "tui-da-sable",
+    "name": {
+      "vi": "Túi da Sable",
+      "en": "Sable leather tote"
+    },
+    "category": "accessories",
+    "collection": "kim-hoan",
+    "price": 32000000,
+    "images": [
+      "pexels:5243552",
+      "pexels:6650001"
+    ],
+    "description": {
+      "vi": "Túi tote da bê nguyên tấm, may tay từng mũi chỉ.",
+      "en": "A full-grain calfskin tote, saddle-stitched by hand."
+    },
+    "materials": {
+      "vi": "Da bê Ý, khóa đồng mạ vàng.",
+      "en": "Italian calfskin, gold-plated brass hardware."
+    },
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "seed-12",
+    "createdAt": "2026-10-01T02:13:20.000Z",
+    "slug": "vong-tay-kim-hoan",
+    "name": {
+      "vi": "Vòng tay Kim Hoàn",
+      "en": "Gilded cuff"
+    },
+    "category": "accessories",
+    "collection": "kim-hoan",
+    "price": 64000000,
+    "images": [
+      "pexels:16853521"
+    ],
+    "description": {
+      "vi": "Vòng tay vàng chạm hoa văn sóng nước, lấy cảm hứng từ chạm khắc cung đình Huế.",
+      "en": "A gold cuff chased with wave motifs from Hue court carvings."
+    },
+    "materials": {
+      "vi": "Vàng 18K.",
+      "en": "18K gold."
+    },
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "seed-13",
+    "createdAt": "2026-10-01T02:30:00.000Z",
+    "slug": "day-chuyen-giot-suong",
+    "name": {
+      "vi": "Dây chuyền Giọt Sương",
+      "en": "Dewdrop necklace"
+    },
+    "category": "accessories",
+    "collection": "kim-hoan",
+    "price": 41500000,
+    "images": [
+      "pexels:7700270"
+    ],
+    "description": {
+      "vi": "Mặt dây kim cương giọt nước trên sợi xích mảnh.",
+      "en": "A diamond dewdrop pendant on a fine chain."
+    },
+    "materials": {
+      "vi": "Vàng trắng 18K, kim cương 0,5ct.",
+      "en": "18K white gold, 0.5ct diamond."
+    },
+    "featured": false,
+    "published": true
+  },
+  {
+    "id": "seed-14",
+    "createdAt": "2026-10-01T02:46:40.000Z",
+    "slug": "hoa-tai-trang-khuyet",
+    "name": {
+      "vi": "Hoa tai Trăng Khuyết",
+      "en": "Crescent earrings"
+    },
+    "category": "accessories",
+    "collection": "kim-hoan",
+    "price": 22800000,
+    "images": [
+      "pexels:6924156",
+      "pexels:10082804"
+    ],
+    "description": {
+      "vi": "Hoa tai vàng hình trăng khuyết, nhẹ và thanh thoát.",
+      "en": "Crescent gold earrings, light and graceful."
+    },
+    "materials": {
+      "vi": "Vàng 18K.",
+      "en": "18K gold."
+    },
+    "featured": false,
+    "published": true
+  },
+  {
+    "id": "seed-15",
+    "createdAt": "2026-10-01T03:03:20.000Z",
+    "slug": "giay-cao-got-sable",
+    "name": {
+      "vi": "Giày cao gót Sable",
+      "en": "Sable stiletto"
+    },
+    "category": "accessories",
+    "collection": "kim-hoan",
+    "price": 19500000,
+    "images": [
+      "pexels:134064"
+    ],
+    "description": {
+      "vi": "Giày mũi nhọn da lộn màu be, gót 9cm.",
+      "en": "A pointed suede stiletto in sand, 9cm heel."
+    },
+    "materials": {
+      "vi": "Da lộn, đế da.",
+      "en": "Suede, leather sole."
+    },
+    "featured": false,
+    "published": true
+  }
+]

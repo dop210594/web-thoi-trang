@@ -1,0 +1,22 @@
+<%- include('partials/head', { ogImage: collection.cover }) %>
+
+<section class="collection-hero">
+  <img src="<%= h.img(collection.cover, 1800) %>" srcset="<%= h.srcset(collection.cover) %>" sizes="100vw" alt="" fetchpriority="high" width="1800" height="1100">
+  <div class="collection-hero__body container">
+    <p class="eyebrow eyebrow--light"><%= tr(collection.season) %></p>
+    <h1 class="hero__title"><%= tr(collection.name) %></h1>
+    <p class="lead"><%= tr(collection.description) %></p>
+  </div>
+</section>
+
+<div class="container section section--tight">
+  <% if (products.length) { %>
+    <div class="product-grid product-grid--shop">
+      <% products.forEach(p => { %><%- include('partials/product-card', { p }) %><% }) %>
+    </div>
+  <% } else { %>
+    <p class="empty"><%= t.product.empty %></p>
+  <% } %>
+</div>
+
+<%- include('partials/foot') %>

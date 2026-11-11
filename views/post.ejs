@@ -1,0 +1,29 @@
+<%- include('partials/head', { ogImage: post.cover }) %>
+
+<article class="article">
+  <header class="article__head container container--narrow">
+    <time class="eyebrow" datetime="<%= post.date %>"><%= h.date(post.date, lang) %></time>
+    <h1 class="page-title"><%= tr(post.title) %></h1>
+    <p class="lead"><%= tr(post.excerpt) %></p>
+  </header>
+  <figure class="article__cover container">
+    <img src="<%= h.img(post.cover, 1800) %>" srcset="<%= h.srcset(post.cover) %>" sizes="(min-width: 1280px) 1200px, 100vw" alt="" fetchpriority="high" width="1800" height="1100">
+  </figure>
+  <div class="article__body container container--narrow">
+    <% h.paragraphs(tr(post.body)).forEach(p => { %><p><%= p %></p><% }) %>
+    <p><a class="link-underline" href="<%= url('/journal') %>">← <%= t.journal.back %></a></p>
+  </div>
+</article>
+
+<% if (more.length) { %>
+<section class="section" aria-labelledby="more-title">
+  <div class="container">
+    <h2 id="more-title" class="section-title"><%= t.home.journal %></h2>
+    <div class="post-grid post-grid--two">
+      <% more.forEach(post => { %><%- include('partials/post-card', { post }) %><% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<%- include('partials/foot') %>

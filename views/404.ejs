@@ -1,0 +1,10 @@
+<%- include('partials/head') %>
+
+<section class="page-head container container--narrow page-head--center not-found">
+  <p class="eyebrow">404</p>
+  <h1 class="page-title"><%= t.notFound.title %></h1>
+  <p class="lead"><%= t.notFound.text %></p>
+  <a class="btn btn--dark" href="<%= url('/') %>"><%= t.notFound.back %></a>
+</section>
+
+<%- include('partials/foot') %>
